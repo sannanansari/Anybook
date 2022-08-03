@@ -1,0 +1,22 @@
+h2 {
+    text-align: center;
+    color: gray;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+    margin-left: 40%;
+}
+
+.lists {
+    padding: 1rem;
+    ion-text,
+    ion-input {
+        // text-align: center;
+        margin-left: 6rem;
+    }
+    ion-icon {
+        padding-left: 1rem;
+    }
+}

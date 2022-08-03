@@ -1,0 +1,12 @@
+<ion-content>
+    
+        <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content></ion-refresher-content>
+          </ion-refresher>
+    <ion-card>
+        <ion-label>
+            <h1 class="ion-text-center">All Books</h1>
+        </ion-label>
+        <app-product [book]="book" [isLoading]="isLoading"></app-product>
+    </ion-card>
+</ion-content>

@@ -1,0 +1,50 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+     Comment Tab
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-item *ngIf="comments.length > 0">
+      <ion-label class="header">User Id</ion-label>
+      <ion-text class="header">Comments</ion-text>
+      <ion-note>Post Id</ion-note>
+    </ion-item>
+    <ion-item *ngFor="let item of comments">
+        <ion-label>{{item.id}}</ion-label>
+        <ion-text>{{item.body}}</ion-text>
+        <ion-note>{{item.postId}}</ion-note>
+    </ion-item>
+</ion-content> -->
+
+
+<ion-app>
+
+
+    <ion-content>
+        <!-- <ion-avtar> -->
+        <img src="../../assets/avtar.webp">
+        <!-- </ion-avtar> -->
+        <ion-item class="lists">
+            <ion-icon name="person"></ion-icon>
+            <ion-input [(ngModel)]="name"></ion-input>
+        </ion-item>
+        <ion-item class="lists">
+            <ion-icon name="phone-portrait"></ion-icon>
+            <ion-input [(ngModel)]="email"></ion-input>
+        </ion-item>
+        <ion-item class="lists">
+            <ion-icon name="mail"></ion-icon>
+            <ion-input [(ngModel)]="number"></ion-input>
+        </ion-item>
+        <ion-item class="lists">
+            <ion-icon name="male"></ion-icon>
+            <ion-input [(ngModel)]="gender"></ion-input>
+        </ion-item>
+
+
+        <ion-button expand="block" (click)="saveIt($event)">Save</ion-button>
+    </ion-content>
+
+</ion-app>

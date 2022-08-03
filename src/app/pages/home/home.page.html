@@ -1,0 +1,55 @@
+<ion-content class="ion-padding">
+  <!-- <ion-grid> -->
+  <ion-list *ngIf="isLoading" class="skeleton">
+    <div *ngFor="let item of  [1,2,3,4,5,6]">
+      <div>
+        <ion-skeleton-text
+          animated
+          style="width: 80%; height: 200px"
+        ></ion-skeleton-text>
+      </div>
+      <ion-item lines="none">
+        <!-- <ion-label> -->
+        <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        <!-- </ion-label> -->
+        <!-- <ion-text> -->
+        <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+        <!-- </ion-text> -->
+      </ion-item>
+    </div>
+  </ion-list>
+  <ion-virtual-scroll
+    [items]="home"
+    approxItemHeight="320px"
+    *ngIf="!isLoading"
+  >
+    <ion-card
+      class="ion-padding"
+      *virtualItem="let item; let itemBounds = bounds;"
+    >
+      <div>
+        <!-- <ion-button>Hover Over Me</ion-button> -->
+        <!-- <ion-button id="">Side=Top, Alignment=Center</ion-button> -->
+        <ion-img
+          class="ion-padding"
+          src="{{item.image_link}}"
+          id="{{item.title}}"
+        ></ion-img>
+        <ion-popover trigger="{{item.title}}" side="top" alignment="center">
+          <ng-template>
+            <ion-img class="ion-padding" src="{{item.image_link}}"></ion-img>
+          </ng-template>
+        </ion-popover>
+        <!-- <ion-popover trigger="hover-trigger" trigger-action="click"> -->
+        <!-- <ion-img class="ion-padding" src="{{item.imageLink}}"></ion-img> -->
+        <!-- <ion-content class="ion-padding">Hello World!</ion-content> -->
+        <!-- </ion-popover> -->
+      </div>
+      <!-- <ion-item routerLink="/pages/details/{{item.title}}"> -->
+      <ion-item (click)="openModal(item.title)">
+        <ion-label class="ion-text-wrap">{{ item.title }}</ion-label>
+        <ion-text class="ion-text-wrap">{{item.author}}</ion-text>
+      </ion-item>
+    </ion-card>
+  </ion-virtual-scroll>
+</ion-content>

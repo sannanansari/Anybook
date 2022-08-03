@@ -1,0 +1,8 @@
+{
+    "/List?name_like=:string": "/List/?name_like=:string",
+    "/details?name_like=:string": "/details/?name_like=:string",
+    "/books?title_like=:string": "/books/?title_like=:string",
+    "/books?id=:number": "/books/?id=:number",
+    "/Favorites?id=:number": "/Favorites/?id=:number",
+    "/profile?id=:number": "/profile/?id=:number"
+}

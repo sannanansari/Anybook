@@ -1,0 +1,38 @@
+<ion-content class="paddTop">
+  <ion-toolbar>
+    <ion-title>{{ details.title }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()" color="secondary">
+        <ion-icon name="arrow-back-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-card>
+    <img class="ion-padding" src="{{ details.image_link }}" />
+    <!-- <ion-item> -->
+    <ion-item>
+      <ion-label color="secondary">Title</ion-label>
+      <ion-text>{{ details.title }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label color="secondary">Author</ion-label>
+      <ion-text>{{ details.author }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label color="secondary">country</ion-label>
+      <ion-text>{{ details.country }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label color="secondary">language</ion-label>
+      <ion-text>{{ details.language }}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label color="secondary">year</ion-label>
+      <ion-text>{{ details.year }}</ion-text>
+    </ion-item>
+    <ion-item href="{{ details.link }}">
+      <ion-label color="secondary">link</ion-label>
+    </ion-item>
+    <!-- </ion-item> -->
+  </ion-card>
+</ion-content>

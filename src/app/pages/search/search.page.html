@@ -1,0 +1,16 @@
+<ion-content class="ion-padding">
+    <ion-item>
+        <ion-input placeholder="search" [(ngModel)]="search" (keyup)="searchBook($event)"></ion-input>
+        <!-- <ion-button (click)="searchBook($event)">Search</ion-button> -->
+        <!-- <div class="search-results">
+          <div class="search-result" *ngFor="let result of results | async">
+            test {{ result.username }}
+          </div>
+        </div> -->
+    </ion-item>
+
+    <!-- <ion-content> -->
+    <app-product [book]="book" [isLoading]="isLoading"></app-product>
+    <!-- </ion-content> -->
+
+</ion-content>

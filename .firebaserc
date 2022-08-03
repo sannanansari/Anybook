@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "anybook-b49d5"
+  },
+  "targets": {
+    "anybook-b49d5": {
+      "hosting": {
+        "app": [
+          "anybook-b49d5"
+        ]
+      }
+    }
+  }
+}

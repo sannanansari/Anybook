@@ -1,0 +1,59 @@
+<!-- <ion-item *ngFor="let item of book" class="ion-justify-content-between">
+    <ion-label>
+        <ion-avatar>
+            <img src="../../assets/book/{{item.image}}">
+        </ion-avatar>
+    </ion-label>
+    <div slot="end">
+        <ion-label color="dark" routerLink="/details/{{item.name}}">{{item.name}}</ion-label>
+        <p>
+            <ion-icon name="star"></ion-icon> {{item.star}}
+        </p>
+    </div>
+</ion-item> -->
+
+<ion-grid>
+  <ion-row>
+    <ion-col
+      *ngFor="let item of book"
+      size-md="3"
+      class="ion-justify-content-center"
+    >
+      <div *ngIf="isLoading">
+        <ion-label>
+          <ion-avatar>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-avatar>
+        </ion-label>
+        <div slot="end">
+          <p>
+            <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+          </p>
+        </div>
+      </div>
+      <div *ngIf="!isLoading">
+        <ion-label>
+          <ion-avatar>
+            <img [src]="item.image_link" id="{{ item.title }}" />
+            <!-- <ion-img class="ion-padding" src="{{item.imageLink}}"></ion-img> -->
+          </ion-avatar>
+        </ion-label>
+        <!-- <ion-popover trigger="{{ item.title }}" alignment="center">
+          <ng-template>
+            <ion-img class="ion-padding" src="{{ item.imageLink }}"></ion-img>
+          </ng-template>
+        </ion-popover> -->
+        <div slot="end">
+          <!-- <p color="dark" routerLink="/details/{{item.title}}" class="ion-align-text-end ion-justify-center">{{item.title}}</p> -->
+          <p
+            color="dark"
+            (click)="expand($event, item.id, item.title, item)"
+            class="ion-align-text-end ion-justify-center"
+          >
+            {{ item.title }}
+          </p>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>

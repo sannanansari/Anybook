@@ -1,0 +1,25 @@
+ion-text {
+    // text-align: center;
+    font-weight: bolder;
+    color: lightskyblue;
+    // margin-left: 2vh 2v?h;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    // background: rgba(0, 0, 255, 0.5);
+    // margin: 10px;
+}
+    @media (prefers-color-scheme: dark) {
+            .square {
+                opacity: 0;
+            }
+        }
+
+                .rectangle {
+                    width: 500px;
+                    height: 100px;
+                    background: rgba(0, 0, 255, 0.5);
+                }
+

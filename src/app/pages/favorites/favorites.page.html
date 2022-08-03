@@ -1,0 +1,51 @@
+<ion-card>
+  <ion-grid>
+    <ion-row>
+      <div
+        *ngFor="let item of loadData"
+        size-md="3"
+        class="ion-justify-content-center"
+        [ngClass]="isLoading ? 'distance': ''"
+      >
+        <div *ngIf="isLoading">
+          <ion-label>
+            <ion-avatar>
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-avatar>
+          </ion-label>
+          <div slot="end">
+            <p>
+              <ion-skeleton-text
+                animated
+                style="width: 100%"
+              ></ion-skeleton-text>
+            </p>
+          </div>
+        </div>
+      </div>
+      <ion-col
+        *ngFor="let item of book"
+        size-md="3"
+        class="ion-justify-content-center"
+      >
+        <div *ngIf="!isLoading">
+          <ion-label>
+            <ion-avatar>
+              <img [src]="item.image_link" />
+            </ion-avatar>
+          </ion-label>
+          <div slot="end">
+            <!-- <p color="dark" routerLink="/pages/details/{{item.title}}" class="ion-align-text-end ion-justify-center">{{item.title}}</p> -->
+            <p
+              color="dark"
+              (click)="openModal(item.title)"
+              class="ion-align-text-end ion-justify-center"
+            >
+              {{item.title}}
+            </p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>

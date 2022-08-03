@@ -1,0 +1,49 @@
+<ion-app>
+  <ion-content>
+    <ion-item class="lists">
+      <ion-icon name="book-sharp"></ion-icon>
+      <ion-input [(ngModel)]="book.title" placeholder="Name"></ion-input>
+    </ion-item>
+    <ion-item class="lists">
+      <ion-icon name="pencil-sharp"></ion-icon>
+      <ion-input [(ngModel)]="book.author" placeholder="Author"></ion-input>
+    </ion-item>
+    <ion-item class="lists">
+      <ion-icon name="camera-sharp"></ion-icon>
+      <ion-input
+        [(ngModel)]="book.image_link"
+        placeholder="Image URL"
+      ></ion-input>
+    </ion-item>
+    <ion-item class="lists">
+      <ion-icon name="clipboard-sharp"></ion-icon>
+      <ion-input [(ngModel)]="book.pages" placeholder="Book Pages"></ion-input>
+    </ion-item>
+    <ion-item class="lists">
+      <ion-icon name="link-sharp"></ion-icon>
+      <ion-input
+        [(ngModel)]="book.link"
+        placeholder="Book Details Link"
+      ></ion-input>
+    </ion-item>
+    <ion-item class="lists">
+      <ion-icon name="language-sharp"></ion-icon>
+      <ion-input [(ngModel)]="book.language" placeholder="Language"></ion-input>
+    </ion-item>
+    <ion-item class="lists">
+      <ion-icon name="location-sharp"></ion-icon>
+      <ion-input [(ngModel)]="book.country" placeholder="Country"></ion-input>
+    </ion-item>
+    <ion-item class="lists">
+      <ion-icon name="calendar-sharp"></ion-icon>
+      <ion-input [(ngModel)]="book.year" placeholder="Calendar"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" *ngIf="save" (click)="saveIt($event)"
+      >Save</ion-button
+    >
+    <ion-button expand="block" *ngIf="!save" (click)="editIt($event)"
+      >Edit</ion-button
+    >
+  </ion-content>
+</ion-app>

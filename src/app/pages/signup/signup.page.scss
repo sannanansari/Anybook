@@ -1,0 +1,26 @@
+ion-avatar {
+    height: 20vh;
+    width: 20vh;
+    ion-img {
+        height: 100%;
+        width: 100%;
+    }
+    align-self: center;
+    margin: 10vh auto;
+}
+
+ion-text {
+    align-self: center;
+}
+
+.signUp {
+    // display: flex;
+    text-align: center;
+    color: rgb(158, 10, 10);
+    ion-text {
+        text-decoration: underline;
+        font-weight: bolder;
+        // word-spacing: 3px;
+        letter-spacing: 0.1rem;
+    }
+}

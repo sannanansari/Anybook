@@ -1,0 +1,15 @@
+<ion-content color="primary">
+  <div class="container ion-text-center">
+    <!-- <img src="../../../assets/lottie/books.json" /> -->
+    <!-- <ion-avatar #image>
+      <ion-icon name="book-outline"></ion-icon>
+    </ion-avatar>-->
+    <ng-lottie
+      [options]="options"
+      (animationCreated)="initializeApp($event)"
+    ></ng-lottie>
+    <!-- <button (click)="play()">play</button> -->
+    <div></div>
+    <h3 #text>Anybook</h3>
+  </div>
+</ion-content>

@@ -1,0 +1,68 @@
+<ion-content>
+
+    <ion-item lines="none">
+
+        <ion-avatar>
+
+            <ion-img src="../../assets/book/login-image.jpg"></ion-img>
+
+        </ion-avatar>
+
+    </ion-item>
+
+
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <ion-list>
+            <ion-item lines="none" class="ion-margin">
+                <ion-icon name="mail" slot="start" color="danger"></ion-icon>
+                <ion-input
+                    type="email"
+                    name="email"
+                    ngModel
+                    email
+                    #emailCtrl="ngModel"
+                    placeholder="email"
+                    required
+                >
+                </ion-input>
+            </ion-item>
+            <ion-text color="danger" *ngIf="!emailCtrl.valid && emailCtrl.touched" class="ion-text-center errorMsg">
+                <p>* Wrong Email</p>
+        </ion-text>
+            <ion-item lines="none" class="ion-margin">
+                <ion-icon name="key" slot="start" color="danger"></ion-icon>
+                <ion-input
+                    [type]="passwordType"
+                    name="password"
+                    ngModel
+                    #passwordCtrl="ngModel"
+                    placeholder="Password"
+                    minLength="8"
+                    required
+                >
+                </ion-input>
+                <ion-icon name="eye-outline" *ngIf="passwordShow" (click)="changeType()" slot="end" color="danger"></ion-icon>
+                <ion-icon name="eye-off-outline" *ngIf="!passwordShow" (click)="changeType()" slot="end" color="danger"></ion-icon>
+            </ion-item>
+            <ion-text color="danger" *ngIf="!passwordCtrl.valid && passwordCtrl.touched" class="ion-text-center errorMsg">
+                <p>* Password should be more than 8 character</p>
+        </ion-text>
+        </ion-list>
+
+        <div class="forgot ">
+            <ion-text routerLink="/forgot-password">Forgot Password ?</ion-text>
+        </div>
+        <div class="ion-margin">
+            <ion-button expand="block" shape="round" type="submit" color="dark">
+                <ion-icon name="log-in-outline" slot="start"></ion-icon>
+                Log IN
+            </ion-button>
+        </div>
+    </form>
+    
+    <div class="signUp">
+        <p>No an User, No worries</p>
+        <ion-text routerLink="/signup">Sign Up</ion-text>
+    </div>
+
+</ion-content>

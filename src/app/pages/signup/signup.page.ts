@@ -9,47 +9,45 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
-
   passwordShow = true;
   passwordConfirmShow = true;
   passwordConfirmType = 'password';
   passwordType = 'password';
   passwordEqual = false;
 
-  constructor(private authService: AuthService,private router:Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   changeType() {
-    if(this.passwordShow) {
+    if (this.passwordShow) {
       this.passwordType = 'text';
       this.passwordShow = false;
     } else {
       this.passwordType = 'password';
-      this.passwordShow = true
+      this.passwordShow = true;
     }
   }
 
-  changeConfirmType(){
-    if(this.passwordShow) {
+  changeConfirmType() {
+    if (this.passwordShow) {
       this.passwordConfirmType = 'text';
       this.passwordConfirmShow = false;
     } else {
       this.passwordConfirmType = 'password';
-      this.passwordShow = true
-    }}
+      this.passwordShow = true;
+    }
+  }
 
   onSubmit(form: NgForm) {
     console.log(form);
-    if(form.value.password == form.value.confirmPassword) {
-      console.log("Equal");
-      this.authService.register(form.value).then((data: any) => {
-        // this.router.navigateByUrl("/login")
-      })
-    }
-    else {
-      console.log("Not Equal");
+    if (form.value.password == form.value.confirmPassword) {
+      console.log('Equal');
+      this.authService.register(form.value).subscribe((data: any) => {
+        this.router.navigateByUrl('/login');
+      });
+    } else {
+      console.log('Not Equal');
       this.passwordEqual = true;
     }
   }

@@ -6,7 +6,7 @@ import { AdminGuard } from './services/admin-auth/admin.guard';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '/',
     redirectTo: '/pages/splash',
     pathMatch: 'full',
   },

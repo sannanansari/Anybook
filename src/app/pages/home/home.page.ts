@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { element } from 'protractor';
 import { DetailsComponent } from 'src/app/components/details/details.component';
 import { book } from 'src/app/interface/book.interface';
@@ -13,11 +14,15 @@ import { GlobalService } from 'src/app/services/global/global.service';
 export class HomePage {
   home: Array<object> = [];
   isLoading = true;
-  constructor(private fetch: FetchService, private global: GlobalService) {}
+  constructor(
+    private fetch: FetchService,
+    private global: GlobalService,
+    private route: Router
+  ) {}
 
   ngOnInit() {
     setTimeout(() => {
-      this.fetch.getHome().subscribe((data: any) => {
+      this.fetch.getHome().then((data: any) => {
         this.home = data;
         // data.forEach((element) => {
         //   this.home = element;

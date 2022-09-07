@@ -21,51 +21,53 @@ export class AuthService {
     return await this.id;
   }
 
-  register(form) {
-    // try{
-    //   const registerUser = await this.fireAuth.createUserWithEmailAndPassword(form.email,form.password)
-    //   // console.log(registerUser);
-    //   const data = {
-    //     uid: registerUser.user.uid,
-    //     email: form.email,
-    //     phone: form.phone,
-    //     gender: form.gender,
-    //     type: 'user',
-    //     status: 'active'
-    //   }
-    //   await this.adb.collection('users').doc(registerUser.user.uid).set(data);
-    // }
-    // catch(e) {}
+  async register(form) {
+    try {
+      const registerUser = await this.fireAuth.createUserWithEmailAndPassword(
+        form.email,
+        form.password
+      );
+      // console.log(registerUser);
+      const data = {
+        uid: registerUser.user.uid,
+        email: form.email,
+        phone: form.phone,
+        gender: form.gender,
+        type: 'user',
+        status: 'active',
+      };
+      await this.adb.collection('users').doc(registerUser.user.uid).set(data);
+    } catch (e) {}
 
-    return this.http.post(`http://localhost:8080/register`, form);
+    // return this.http.post(`http://localhost:8080/register`, form);
   }
 
-  login(email: string, password: string) {
-    return this.http.post(
-      `http://localhost:8080/login`,
-      {
-        email: email,
-        password: password,
-      },
-      { responseType: 'text' }
-    );
-    // localStorage.removeItem('id');
-    // const check = await this.fireAuth.signInWithEmailAndPassword(
-    //   email,
-    //   password
+  async login(email: string, password: string) {
+    // return this.http.post(
+    //   `http://localhost:8080/login`,
+    //   {
+    //     email: email,
+    //     password: password,
+    //   }
+    //   // { responseType: 'text' }
     // );
-    // const getData = await (
-    //   await this.adb.collection('users').doc(check.user.uid).get().toPromise()
-    // ).data();
-    // const type = getData['type'];
-    // localStorage.setItem('uid', check.user.uid);
-    // if (type == 'user') {
-    //   localStorage.setItem('id', 'user');
-    //   return await this.getID();
-    // } else {
-    //   localStorage.setItem('id', 'admin');
-    //   return await this.getID();
-    // }
+    localStorage.removeItem('id');
+    const check = await this.fireAuth.signInWithEmailAndPassword(
+      email,
+      password
+    );
+    const getData = await (
+      await this.adb.collection('users').doc(check.user.uid).get().toPromise()
+    ).data();
+    const type = getData['type'];
+    localStorage.setItem('uid', check.user.uid);
+    if (type == 'user') {
+      localStorage.setItem('id', 'user');
+      return await this.getID();
+    } else {
+      localStorage.setItem('id', 'admin');
+      return await this.getID();
+    }
     // return await false;
     // return httop
   }
@@ -73,5 +75,36 @@ export class AuthService {
   async forgot(email: string) {
     await this.fireAuth.sendPasswordResetEmail(email);
     // })
+  }
+  confirmationResult!: any;
+  public signInWithPhoneNumber(recaptchaVerifier, phoneNumber) {
+    console.log(recaptchaVerifier, phoneNumber);
+
+    return new Promise<any>((resolve, reject) => {
+      this.fireAuth
+        .signInWithPhoneNumber(phoneNumber, recaptchaVerifier)
+        .then((confirmationResult) => {
+          this.confirmationResult = confirmationResult;
+          resolve(confirmationResult);
+        })
+        .catch((error) => {
+          console.log(error);
+          reject('SMS not sent');
+        });
+    });
+  }
+  public async enterVerificationCode(code) {
+    return new Promise<any>((resolve, reject) => {
+      this.confirmationResult
+        .confirm(code)
+        .then(async (result) => {
+          console.log(result);
+          const user = result.user;
+          resolve(user);
+        })
+        .catch((error) => {
+          reject(error.message);
+        });
+    });
   }
 }

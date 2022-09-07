@@ -108,6 +108,30 @@ export class GlobalService {
       });
   }
 
+  // showAlert(msg?, spinner?) {
+  //   if (!this.isLoading) this.setLoader();
+  //   return this.loadingCtrl
+  //     .create({
+  //       message: msg,
+  //       spinner: spinner ? spinner : 'bubbles',
+  //     })
+  //     .then((res) => {
+  //       res.present().then(() => {
+  //         if (!this.isLoading) {
+  //           res.dismiss().then(() => {
+  //             console.log('Abort');
+  //           });
+  //         }
+  //       });
+  //     })
+  //     .catch((e) => {
+  //       console.log('error', e);
+  //     });
+  // }
+
+  //page 1 --- > showAlert("This is alert 1")
+
+  // page 2 ---> showAlert("This is alert 2")
   hideLoader() {
     // this.isLoading = false;
     if (this.isLoading) this.setLoader();
@@ -121,7 +145,7 @@ export class GlobalService {
     // this.fetch.getBookById(id).subscribe((data: any) => {
     console.log(data);
 
-    this.fetch.postFavorites(data, this.uid).subscribe((data: any) => {
+    this.fetch.postFavorites(data, this.uid).then((data: any) => {
       console.log('post', data);
       // location.reload();
     });

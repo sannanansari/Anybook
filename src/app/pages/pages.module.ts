@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { PagesPageRoutingModule } from './pages-routing.module';
 
 import { PagesPage } from './pages.page';
-import { ProductComponent } from '../components/product/product.component';
 import { ComponentsModule } from '../components/components.module';
 
 @NgModule({

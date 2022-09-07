@@ -43,7 +43,7 @@ export class SignupPage implements OnInit {
     console.log(form);
     if (form.value.password == form.value.confirmPassword) {
       console.log('Equal');
-      this.authService.register(form.value).subscribe((data: any) => {
+      this.authService.register(form.value).then((data: any) => {
         this.router.navigateByUrl('/login');
       });
     } else {

@@ -12,7 +12,7 @@ export class ListPage implements OnInit {
   constructor(private fetch: FetchService) {}
 
   ngOnInit() {
-    this.fetch.getHome().subscribe((data: any) => {
+    this.fetch.getHome().then((data: any) => {
       this.book = data;
     });
   }

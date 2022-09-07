@@ -16,7 +16,7 @@ export class SearchPage implements OnInit {
   constructor(private fetch: FetchService, private adb: AngularFirestore) {}
 
   ngOnInit() {
-    this.fetch.getHome().subscribe((data: any) => {
+    this.fetch.getHome().then((data: any) => {
       this.book = data;
       console.log(this.book, data);
     });

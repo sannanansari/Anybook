@@ -9,7 +9,7 @@ import { FetchService } from 'src/app/services/fetch.service';
 export class ProfileComponent implements OnInit {
   name = '';
   email = '';
-  number = '0000000';
+  phone = '0000000';
   gender = 'M';
   profile: Object = {};
   constructor(private fetch: FetchService) {}
@@ -19,12 +19,12 @@ export class ProfileComponent implements OnInit {
     const profile = localStorage.getItem('id');
     if (profile == 'admin') user = 2;
     else user = 1;
-    this.fetch.getProfile(user).subscribe((data: any) => {
+    this.fetch.getProfile(user).then((data: any) => {
       this.profile = data;
       console.log(data);
       this.name = this.profile['name'];
       this.gender = this.profile['gender'];
-      this.number = this.profile['number'];
+      this.phone = this.profile['phone'];
       this.email = this.profile['email'];
     });
   }
@@ -32,11 +32,11 @@ export class ProfileComponent implements OnInit {
   saveIt(event: any) {
     this.profile['name'] = this.name;
     this.profile['gender'] = this.gender;
-    this.profile['number'] = this.number;
+    this.profile['phone'] = this.phone;
     this.profile['email'] = this.email;
     console.log(this.profile);
 
-    this.fetch.postProfile(this.profile).subscribe((data: any) => {
+    this.fetch.postProfile(this.profile).then((data: any) => {
       console.log(data);
     });
   }

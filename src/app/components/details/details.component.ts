@@ -35,7 +35,7 @@ export class DetailsComponent implements OnInit {
   ngOnInit() {
     console.log('Modal page', this.title, this.value);
     console.log(this.title);
-    this.fetch.getDetailBook(this.value).subscribe((data: any) => {
+    this.fetch.getDetailBook(this.value).then((data: any) => {
       this.details = data[0];
       console.log('details', this.details);
     });

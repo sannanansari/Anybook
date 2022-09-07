@@ -18,7 +18,41 @@
       </ion-item>
     </div>
   </ion-list>
-  <ion-virtual-scroll
+  <cdk-virtual-scroll-viewport
+    itemSize="56"
+    minBufferPx="900"
+    maxBufferPx="1350"
+  >
+    <ion-list>
+      <ion-card *cdkVirtualFor="let item of home">
+        <div>
+          <!-- <ion-button>Hover Over Me</ion-button> -->
+          <!-- <ion-button id="">Side=Top, Alignment=Center</ion-button> -->
+
+          <ion-img
+            class="ion-padding"
+            src="{{item.image_link}}"
+            id="{{item.title}}"
+          ></ion-img>
+          <ion-popover trigger="{{item.title}}" side="top" alignment="center">
+            <ng-template>
+              <ion-img class="ion-padding" src="{{item.image_link}}"></ion-img>
+            </ng-template>
+          </ion-popover>
+          <!-- <ion-popover trigger="hover-trigger" trigger-action="click"> -->
+          <!-- <ion-img class="ion-padding" src="{{item.imageLink}}"></ion-img> -->
+          <!-- <ion-content class="ion-padding">Hello World!</ion-content> -->
+          <!-- </ion-popover> -->
+        </div>
+        <!-- <ion-item routerLink="/pages/details/{{item.title}}"> -->
+        <ion-item (click)="openModal(item.title)">
+          <ion-label class="ion-text-wrap">{{ item.title }}</ion-label>
+          <ion-text class="ion-text-wrap">{{item.author}}</ion-text>
+        </ion-item>
+      </ion-card>
+    </ion-list>
+  </cdk-virtual-scroll-viewport>
+  <!-- <ion-virtual-scroll
     [items]="home"
     approxItemHeight="320px"
     *ngIf="!isLoading"
@@ -28,8 +62,7 @@
       *virtualItem="let item; let itemBounds = bounds;"
     >
       <div>
-        <!-- <ion-button>Hover Over Me</ion-button> -->
-        <!-- <ion-button id="">Side=Top, Alignment=Center</ion-button> -->
+
         <ion-img
           class="ion-padding"
           src="{{item.image_link}}"
@@ -40,16 +73,11 @@
             <ion-img class="ion-padding" src="{{item.image_link}}"></ion-img>
           </ng-template>
         </ion-popover>
-        <!-- <ion-popover trigger="hover-trigger" trigger-action="click"> -->
-        <!-- <ion-img class="ion-padding" src="{{item.imageLink}}"></ion-img> -->
-        <!-- <ion-content class="ion-padding">Hello World!</ion-content> -->
-        <!-- </ion-popover> -->
       </div>
-      <!-- <ion-item routerLink="/pages/details/{{item.title}}"> -->
       <ion-item (click)="openModal(item.title)">
         <ion-label class="ion-text-wrap">{{ item.title }}</ion-label>
         <ion-text class="ion-text-wrap">{{item.author}}</ion-text>
       </ion-item>
     </ion-card>
-  </ion-virtual-scroll>
+  </ion-virtual-scroll> -->
 </ion-content>

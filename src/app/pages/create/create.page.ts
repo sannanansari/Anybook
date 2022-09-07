@@ -47,7 +47,7 @@ export class CreatePage implements OnInit {
     if (this.id == null) this.save = true;
     else {
       this.save = false;
-      this.fetch.getBookById(this.id).subscribe((data: any) => {
+      this.fetch.getBookById(this.id).then((data: any) => {
         this.book = data;
         console.log(this.book);
       });
@@ -56,7 +56,7 @@ export class CreatePage implements OnInit {
 
   saveIt(event: any) {
     console.log(event, this.book);
-    this.fetch.postBook(this.book).subscribe((data: any) => {
+    this.fetch.postBook(this.book).then((data: any) => {
       console.log(data);
     });
   }
@@ -75,7 +75,7 @@ export class CreatePage implements OnInit {
         // role: 'cancel',
         handler: () => {
           console.log('Ok');
-          this.fetch.putBookById(this.id, this.book).subscribe((data: any) => {
+          this.fetch.putBookById(this.id, this.book).then((data: any) => {
             console.log(data);
           });
         },

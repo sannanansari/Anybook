@@ -17,7 +17,7 @@ export class FavoritesPage implements OnInit {
 
   ngOnInit() {
     let datas;
-    this.fetch.getFavorites().subscribe((data: any) => {
+    this.fetch.getFavorites().then((data: any) => {
       this.loadData = data;
       console.log(data);
     });

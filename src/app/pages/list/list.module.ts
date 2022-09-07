@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { ListPageRoutingModule } from './list-routing.module';
 
 import { ListPage } from './list.page';
-import { ProductComponent } from 'src/app/components/product/product.component';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({

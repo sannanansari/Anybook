@@ -7,7 +7,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -19,6 +19,7 @@ import { LottieSplashScreen } from '@ionic-native/lottie-splash-screen/ngx';
 import { LottieModule } from 'ngx-lottie';
 // import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { BasicAuthHtppInterceptorService } from './services/basic-auth-htpp-interceptor-service.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,6 +41,11 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     ScrollingModule,
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BasicAuthHtppInterceptorService,
+      multi: true,
+    },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     LottieSplashScreen,
   ],

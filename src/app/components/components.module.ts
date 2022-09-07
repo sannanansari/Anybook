@@ -5,9 +5,9 @@ import { AppComponent } from '../app.component';
 import { DetailsComponent } from './details/details.component';
 
 @NgModule({
-  declarations: [ProductComponent, DetailsComponent],
+  declarations: [ProductComponent],
   imports: [CommonModule],
-  exports: [ProductComponent, DetailsComponent],
-  entryComponents: [ProductComponent, DetailsComponent],
+  exports: [ProductComponent],
+  entryComponents: [ProductComponent],
 })
 export class ComponentsModule {}

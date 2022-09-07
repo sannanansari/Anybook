@@ -1,1 +1,1 @@
-web: npm run build && npm start
+web: ionic serve --port 4321 --nobrowser --nolivereload --noopen
